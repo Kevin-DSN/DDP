@@ -1,13 +1,13 @@
 package com.example.DDP.Usuarios.Service;
 
-import com.example.DDP.Usuarios.Repository.UsuariosRepository;
+import com.example.DDP.Usuarios.Repository.ClienteRepository;
 import org.springframework.stereotype.Service;
 
 @Service
 public class UsuariosService {
-    private final UsuariosRepository usuariosRepository;
+    private final ClienteRepository clienteRepository;
 
-    public UsuariosService(UsuariosRepository usuariosRepository) {
-        this.usuariosRepository = usuariosRepository;
+    public UsuariosService(ClienteRepository clienteRepository) {
+        this.clienteRepository = clienteRepository;
     }
 }

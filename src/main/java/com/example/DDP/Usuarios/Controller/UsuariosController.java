@@ -9,8 +9,8 @@ import org.springframework.web.bind.annotation.RestController;
 public class UsuariosController {
     
     private final UsuariosService usuariosService;
+
     public UsuariosController(UsuariosService usuariosService) {
         this.usuariosService = usuariosService;
     }
 }
-
