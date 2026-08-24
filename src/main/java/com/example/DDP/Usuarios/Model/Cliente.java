@@ -18,4 +18,24 @@ public class Cliente {
     private String telefono;
     private String RFC;
     private double saldo;
+
+    protected Cliente(){
+
+    }
+
+    public Cliente(String Nombre, String Direccion, String Telefono, String RFC, double Saldo){
+        this.nombre = Nombre;
+        this.direccion = Direccion;
+        this.telefono = Telefono;
+        this.RFC = RFC;
+        this.saldo = Saldo;
+    }
+
+    public void setSaldo(double saldo){
+        this.saldo = saldo;
+    }
+
+    public double getSaldo(){
+        return saldo;
+    }
 }

@@ -14,7 +14,26 @@ public class Proveedor {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String nombre;
-    private String Editorial;
+    private String editorial;
     private String telefono;
     private double saldo;
+
+    protected Proveedor(){
+
+    }
+
+    public Proveedor(String Nombre, String Editorial, String Telefono, double Saldo){
+        this.nombre = Nombre;
+        this.editorial = Editorial;
+        this.telefono = Telefono;
+        this.saldo = Saldo;
+    }
+
+    public void setSaldo(double Saldo){
+        this.saldo = Saldo;
+    }
+
+    public double getSaldo(){
+        return saldo;
+    }
 }
