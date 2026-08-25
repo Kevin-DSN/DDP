@@ -38,4 +38,8 @@ public class Cliente {
     public double getSaldo(){
         return saldo;
     }
+
+    public int getID(){
+        return id;
+    }
 }
