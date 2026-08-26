@@ -35,6 +35,18 @@ public class Cliente {
         this.saldo = saldo;
     }
 
+    public String getNombre() {
+        return nombre;
+    }
+
+    public String getDireccion() {
+        return direccion;
+    }
+
+    public String getTelefono() {
+        return telefono;
+    }
+    
     public double getSaldo(){
         return saldo;
     }

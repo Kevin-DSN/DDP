@@ -7,6 +7,13 @@ public class SelectProveedorDTO {
     private String telefono;
     private double saldo;
 
+    public SelectProveedorDTO(int Id, String Nombre, String Editorial, String Telefono, double Saldo){
+        this.id = Id;
+        this.nombre = Nombre;
+        this.editorial = Editorial;
+        this.telefono = Telefono;
+        this.saldo = Saldo;
+    }
     public int getId(){
         return id;
     }

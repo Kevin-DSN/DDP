@@ -14,4 +14,24 @@ public class UpdateClienteDTO {
         this.RFC = RFC;
         this.saldo = Saldo;
     }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public void setDireccion(String direccion) {
+        this.direccion = direccion;
+    }
+
+    public void setTelefono(String telefono) {
+        this.telefono = telefono;
+    }
+    
+    public void setRFC(String RFC) {
+        this.RFC = RFC;
+    }
+
+    public void setSaldo(double saldo) {
+        this.saldo = saldo;
+    }
 }

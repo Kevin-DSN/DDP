@@ -1,6 +1,6 @@
 package com.example.DDP.Usuarios.DTOs;
 
-public class CreateClienteDTO {
+public class InsertClienteDTO {
 
     private String nombre;
     private String direccion;
@@ -8,7 +8,7 @@ public class CreateClienteDTO {
     private String RFC;
     private double saldo;
 
-    public CreateClienteDTO(String Nombre, String Direccion, String Telefono, String RFC){
+    public InsertClienteDTO(String Nombre, String Direccion, String Telefono, String RFC){
         this.nombre = Nombre;
         this.direccion = Direccion;
         this.telefono = Telefono;

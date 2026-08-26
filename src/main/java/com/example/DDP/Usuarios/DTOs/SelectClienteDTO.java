@@ -5,8 +5,16 @@ public class SelectClienteDTO {
     private String nombre;
     private String direccion;
     private String telefono;
-    private String RFC;
+    private String rfc;
     private double saldo;
+
+    public SelectClienteDTO(int Id, String Nombre, String Direccion, String Telefono, String RFC, double Saldo){
+        this.id = Id;
+        this.nombre = Nombre;
+        this.direccion = Direccion;
+        this.rfc = RFC;
+        this.saldo = Saldo;
+    }
 
     public int getId(){
         return id;
@@ -25,7 +33,7 @@ public class SelectClienteDTO {
     }
 
     public String getRFC(){
-        return RFC;
+        return rfc;
     }
 
     public double getSaldo(){
