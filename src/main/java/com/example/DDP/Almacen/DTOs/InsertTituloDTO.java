@@ -11,4 +11,16 @@ public class InsertTituloDTO {
         this.cantidad = 0;
         this.idProveedor = IdProveedor;
     }
+
+   public String getNombre() {
+       return nombre;
+   }
+   
+   public int getCantidad() {
+       return cantidad;
+   }
+
+   public int getIdProveedor() {
+       return idProveedor;
+   }
 }

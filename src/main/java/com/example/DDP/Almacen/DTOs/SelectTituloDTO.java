@@ -14,10 +14,6 @@ public class SelectTituloDTO {
         this.idProveedor = IdProveedor;
     }
 
-    public int getId() {
-        return id;
-    }
-
     public String getNombre() {
         return nombre;
     }

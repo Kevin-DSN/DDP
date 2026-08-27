@@ -1,37 +1,37 @@
 package com.example.DDP.Usuarios.DTOs;
 
 public class UpdateClienteDTO {
+    
+    private int id;
     private String nombre;
     private String direccion;
     private String telefono;
     private String RFC;
-    private double saldo;
 
-    public UpdateClienteDTO(String Nombre, String Direccion, String Telefono, String RFC, double Saldo){
+    public UpdateClienteDTO(int id, String Nombre, String Direccion, String Telefono, String RFC){
+        this.id = id;
         this.nombre = Nombre;
         this.direccion = Direccion;
         this.telefono = Telefono;
         this.RFC = RFC;
-        this.saldo = Saldo;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public int getId() {
+        return id;
     }
 
-    public void setDireccion(String direccion) {
-        this.direccion = direccion;
+    public String getNombre() {
+        return nombre;
     }
 
-    public void setTelefono(String telefono) {
-        this.telefono = telefono;
-    }
-    
-    public void setRFC(String RFC) {
-        this.RFC = RFC;
+    public String getDireccion() {
+        return direccion;
     }
 
-    public void setSaldo(double saldo) {
-        this.saldo = saldo;
+    public String getTelefono() {
+        return telefono;
+    }
+    public String getRFC() {
+        return RFC;
     }
 }

@@ -31,10 +31,33 @@ public class Cliente {
         this.saldo = Saldo;
     }
 
-    public void setSaldo(double saldo){
-        this.saldo = saldo;
+    //Actualiza saldo de ventas y devoluciones
+    public void saldoVenta(double saldo){
+        this.saldo += saldo;
     }
 
+    public void saldoDevolucion(double saldo){
+        this.saldo -= saldo;
+    }
+
+    //Metodos Update
+    public void updateNombre(String nombre){
+        this.nombre = nombre;
+    }
+
+    public void updateDireccion(String direccion){
+        this.direccion = direccion;
+    }
+
+    public void updateTelefono(String Telefono){
+        this.telefono = Telefono;
+    }
+
+    public void updateRFC(String RFC){
+        this.RFC = RFC;
+    }
+
+    //Metodos Select
     public String getNombre() {
         return nombre;
     }
@@ -53,5 +76,9 @@ public class Cliente {
 
     public int getID(){
         return id;
+    }
+
+    public String getRFC() {
+        return RFC;
     }
 }

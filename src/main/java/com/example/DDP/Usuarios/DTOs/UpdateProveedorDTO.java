@@ -2,31 +2,30 @@ package com.example.DDP.Usuarios.DTOs;
 
 public class UpdateProveedorDTO {
     
+    private int id;
     private String nombre;
     private String editorial;
     private String telefono;
-    private double saldo;
 
-    public UpdateProveedorDTO(String Nombre, String Editorial, String Telefono, double Saldo){
+    public UpdateProveedorDTO(int Id, String Nombre, String Editorial, String Telefono){
+        this.id = Id;
         this.nombre = Nombre;
         this.editorial = Editorial;
         this.telefono = Telefono;
-        this.saldo = Saldo;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public int getId() {
+        return id;
     }
 
-    public void setEditorial(String editorial) {
-        this.editorial = editorial;
+    public String getNombre() {
+        return nombre;
     }
 
-    public void setTelefono(String telefono) {
-        this.telefono = telefono;
+    public String getEditorial() {
+        return editorial;
     }
-
-    public void setSaldo(double saldo) {
-        this.saldo = saldo;
+    public String getTelefono() {
+        return telefono;
     }
 }

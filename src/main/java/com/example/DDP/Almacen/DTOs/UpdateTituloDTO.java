@@ -19,8 +19,4 @@ public class UpdateTituloDTO {
     public String getNombre() {
         return nombre;
     }
-
-    public int getIdProveedor() {
-        return idProveedor;
-    }
 }

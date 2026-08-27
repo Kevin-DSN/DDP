@@ -12,6 +12,7 @@ public class SelectClienteDTO {
         this.id = Id;
         this.nombre = Nombre;
         this.direccion = Direccion;
+        this.telefono = Telefono;
         this.rfc = RFC;
         this.saldo = Saldo;
     }

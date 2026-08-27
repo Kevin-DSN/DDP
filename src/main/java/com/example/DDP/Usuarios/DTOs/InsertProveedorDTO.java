@@ -12,4 +12,20 @@ public class InsertProveedorDTO {
         this.telefono = Telefono;
         this.saldo = 0.0;
     }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public String getEditorial() {
+        return editorial;
+    }
+
+    public String getTelefono() {
+        return telefono;
+    }
+
+    public double getSaldo() {
+        return saldo;
+    }
 }

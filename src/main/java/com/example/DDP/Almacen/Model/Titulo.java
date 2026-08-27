@@ -26,16 +26,38 @@ public class Titulo {
 
     }
 
-    public Titulo(String Nombre, int Cantidad, Proveedor Proveedor){
+    public Titulo(String Nombre, Proveedor Proveedor){
         this.nombre = Nombre;
-        this.cantidad = Cantidad;
+        this.cantidad = 0;
         this.proveedor = Proveedor;
     }
 
-    public void setCantidad(int Cantidad){
-        this.cantidad = Cantidad;
+    //Suma y resta stock
+    public void agregaStock(int Cantidad){
+        this.cantidad += Cantidad;
     }
 
+    public void restaStock(int Cantidad){
+        this.cantidad += Cantidad;
+    }
+
+    //Metodos de actualizacion de datos
+    public void updateNombre(String Nombre){
+        this.nombre = Nombre;
+    }
+    //Metodos get
+    public int getId() {
+        return id;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public Proveedor getProveedor() {
+        return proveedor;
+    }
+    
     public int getCantidad(){
         return cantidad;
     }

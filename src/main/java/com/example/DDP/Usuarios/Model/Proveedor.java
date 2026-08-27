@@ -29,11 +29,41 @@ public class Proveedor {
         this.saldo = Saldo;
     }
 
-    public void setSaldo(double Saldo){
-        this.saldo = Saldo;
+    //Modificamos el saldo con compra o devolucion
+    public void saldoCompra(double Saldo){
+        this.saldo += Saldo;
+    }
+    public void saldoDevolucion(double Saldo){
+        this.saldo -= Saldo;
     }
 
+    //Actualizamos los datos
+    public void updateNombre(String Nombre){
+        this.nombre = Nombre;
+    }
+     public void updateEditorial(String Editorial){
+        this.editorial = Editorial;
+    }
+
+    public void updateTelefono(String Telefono){
+        this.telefono = Telefono;
+    }
+    
+    //Metodos select
     public double getSaldo(){
         return saldo;
+    }
+    public int getId() {
+        return id;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+    public String getEditorial() {
+        return editorial;
+    }
+    public String getTelefono() {
+        return telefono;
     }
 }
