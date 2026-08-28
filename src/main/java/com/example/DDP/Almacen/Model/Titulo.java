@@ -45,6 +45,10 @@ public class Titulo {
     public void updateNombre(String Nombre){
         this.nombre = Nombre;
     }
+
+    public void updateIdProveedor(Proveedor proveedor){
+        this.proveedor = proveedor;
+    }
     //Metodos get
     public int getId() {
         return id;

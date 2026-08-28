@@ -13,6 +13,11 @@ public class SelectTituloDTO {
         this.cantidad = Cantidad;
         this.idProveedor = IdProveedor;
     }
+    
+    //Metodos GET
+    public int getId() {
+        return id;
+    }
 
     public String getNombre() {
         return nombre;
