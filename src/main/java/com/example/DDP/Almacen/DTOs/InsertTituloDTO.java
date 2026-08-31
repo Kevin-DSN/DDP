@@ -5,9 +5,11 @@ public class InsertTituloDTO {
     private String nombre;
     private int cantidad;
     private int idProveedor;
+    private double Precio;
 
-    public InsertTituloDTO(String Nombre, int IdProveedor){
+    public InsertTituloDTO(String Nombre, double precio, int IdProveedor){
         this.nombre = Nombre;
+        this.Precio = precio;
         this.cantidad = 0;
         this.idProveedor = IdProveedor;
     }
@@ -22,5 +24,9 @@ public class InsertTituloDTO {
 
    public int getIdProveedor() {
        return idProveedor;
+   }
+
+   public double getPrecio() {
+       return Precio;
    }
 }

@@ -4,12 +4,14 @@ public class SelectTituloDTO {
     
     private int id;
     private String nombre;
+    private double precio;
     private int cantidad;
     private int idProveedor;
 
-    public SelectTituloDTO(int Id, String Nombre, int Cantidad, int IdProveedor){
+    public SelectTituloDTO(int Id, String Nombre, double Precio, int Cantidad, int IdProveedor){
         this.id = Id;
         this.nombre = Nombre;
+        this.precio = Precio;
         this.cantidad = Cantidad;
         this.idProveedor = IdProveedor;
     }
@@ -29,5 +31,9 @@ public class SelectTituloDTO {
 
     public int getIdProveedor() {
         return idProveedor;
+    }
+
+    public double getPrecio() {
+        return precio;
     }
 }

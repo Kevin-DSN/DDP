@@ -17,6 +17,7 @@ public class Titulo {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String nombre;
+    private double precio;
     private int cantidad;
     @ManyToOne
     @JoinColumn(name = "idProveedor")
@@ -26,10 +27,11 @@ public class Titulo {
 
     }
 
-    public Titulo(String Nombre, Proveedor Proveedor){
+    public Titulo(String Nombre, Proveedor Proveedor, double precio){
         this.nombre = Nombre;
         this.cantidad = 0;
         this.proveedor = Proveedor;
+        this.precio = precio;
     }
 
     //Suma y resta stock
@@ -49,6 +51,11 @@ public class Titulo {
     public void updateIdProveedor(Proveedor proveedor){
         this.proveedor = proveedor;
     }
+
+    public void updatePrecio(double precio){
+        this.precio = precio;
+    }
+
     //Metodos get
     public int getId() {
         return id;
@@ -64,5 +71,9 @@ public class Titulo {
     
     public int getCantidad(){
         return cantidad;
+    }
+
+    public double getPrecio() {
+        return precio;
     }
 }

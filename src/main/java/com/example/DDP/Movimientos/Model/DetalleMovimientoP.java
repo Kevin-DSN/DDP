@@ -21,4 +21,26 @@ public class DetalleMovimientoP {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+
+    protected DetalleMovimientoP(){
+        
+    }
+
+    public DetalleMovimientoP(MovimientosProveedor movimientosProveedor, String producto){
+        this.movimientosProveedor = movimientosProveedor;
+        this.Producto = producto;
+    }
+
+    //OBtenemos los datos para consultas
+    public int getId() {
+        return id;
+    }
+
+    public MovimientosProveedor getMovimientosProveedor() {
+        return movimientosProveedor;
+    }
+
+    public String getProducto() {
+        return Producto;
+    }
 }

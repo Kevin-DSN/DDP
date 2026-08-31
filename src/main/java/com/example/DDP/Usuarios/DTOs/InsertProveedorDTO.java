@@ -4,13 +4,12 @@ public class InsertProveedorDTO {
     private String nombre;
     private String editorial;
     private String telefono;
-    private double saldo;
+    private double saldo = 0.0;;
 
     public InsertProveedorDTO(String Nombre, String Editorial, String Telefono){
         this.nombre = Nombre;
         this.editorial = Editorial;
         this.telefono = Telefono;
-        this.saldo = 0.0;
     }
 
     public String getNombre() {

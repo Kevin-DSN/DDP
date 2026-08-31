@@ -27,4 +27,46 @@ public class MovimientosProveedor {
     private int Monto;
     private int SaldoActual;
     private int SaldoNuevo;
+
+    protected MovimientosProveedor(){
+        
+    }
+
+    public MovimientosProveedor(Proveedor proveedor, LocalDate Fecha, String movimiento, int monto, int SaldoA, int SaldoN){
+        this.proveedor = proveedor;
+        this.fecha = Fecha;
+        this.Movimiento = movimiento;
+        this.Monto = monto;
+        this.SaldoActual = SaldoA;
+        this.SaldoNuevo = SaldoN;
+    }
+
+    //Obtenemos los datos
+    public int getIdMovimientoP() {
+        return idMovimientoP;
+    }
+
+    public Proveedor getProveedor() {
+        return proveedor;
+    }
+
+    public LocalDate getFecha() {
+        return fecha;
+    }
+
+    public String getMovimiento() {
+        return Movimiento;
+    }
+
+    public int getMonto() {
+        return Monto;
+    }
+
+    public int getSaldoActual() {
+        return SaldoActual;
+    }
+
+    public int getSaldoNuevo() {
+        return SaldoNuevo;
+    }
 }

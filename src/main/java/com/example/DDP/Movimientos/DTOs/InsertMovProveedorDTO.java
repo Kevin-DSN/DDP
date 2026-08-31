@@ -8,15 +8,28 @@ public class InsertMovProveedorDTO {
     private LocalDate fecha;
     private String Movimiento;
     private int Monto;
-    private int SaldoActual;
-    private int SaldoNuevo;
 
-    public InsertMovProveedorDTO(int IdProveedor, LocalDate Fecha, String Movimiento, int Monto, int SaldoActual, int SaldoNuevo){
+    public InsertMovProveedorDTO(int IdProveedor, LocalDate Fecha, String Movimiento, int Monto){
         this.idProveedor = IdProveedor;
         this.fecha = Fecha;
         this.Movimiento = Movimiento;
         this.Monto = Monto;
-        this.SaldoActual = SaldoActual;
-        this.SaldoNuevo = SaldoNuevo;
+    }
+
+    //Accedemos a los datos
+    public int getIdProveedor() {
+        return idProveedor;
+    }
+
+    public LocalDate getFecha() {
+        return fecha;
+    }
+
+    public int getMonto() {
+        return Monto;
+    }
+
+    public String getMovimiento() {
+        return Movimiento;
     }
 }

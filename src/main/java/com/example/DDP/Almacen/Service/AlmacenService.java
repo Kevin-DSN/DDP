@@ -19,22 +19,50 @@ public class AlmacenService {
 
     //Agregamos un nuevo titulo---------------------------------------------------------------------------------------------------
     public SelectTituloDTO crearTitulo(InsertTituloDTO dto){
+        
         Proveedor id = proveedorRepository.findById(dto.getIdProveedor()).orElseThrow(() -> new RuntimeException(
-        "Proveedor no encontrado"));
+        "Titulo no encontrado"));
 
-        Titulo titulo = new Titulo(dto.getNombre(), id);
+        Titulo titulo = new Titulo(dto.getNombre(), id, dto.getPrecio());
         Titulo nuevo = tituloRepository.save(titulo);
 
-        SelectTituloDTO respuestaDto = new SelectTituloDTO(nuevo.getId(), nuevo.getNombre(), 
+        SelectTituloDTO respuestaDto = new SelectTituloDTO(nuevo.getId(), nuevo.getNombre(), nuevo.getPrecio(), 
         nuevo.getCantidad(), nuevo.getProveedor().getId());
 
         return respuestaDto;
     }
 
     //Visualizamos los datos del titulo-------------------------------------------------------------------------------------------
-    
-    //Seleccionamos los datos del titulo
+    public SelectTituloDTO verCliente(int id){
 
-    //Eliminamos el titulo
-    
+        Titulo titulo = tituloRepository.findById(id).orElseThrow(() -> new RuntimeException(
+        "Titulo no encontrado"));
+        SelectTituloDTO resultadoDTO = new SelectTituloDTO(titulo.getId(), titulo.getNombre(), titulo.getPrecio(),
+        titulo.getCantidad(), titulo.getProveedor().getId());
+
+        return resultadoDTO;
+    }
+    //Actualizamos los datos del titulo-----------------------------------------------------------------------------------------------
+    public SelectTituloDTO actualizaCliente(UpdateTituloDTO dto){
+
+        Titulo titulo = tituloRepository.findById(dto.getId()).orElseThrow(() -> new RuntimeException(
+        "Titulo no encontrado"));
+        titulo.updateNombre(dto.getNombre());
+
+        Titulo newTitulo = tituloRepository.save(titulo);
+
+        SelectTituloDTO respuesta = new SelectTituloDTO(newTitulo.getId(), newTitulo.getNombre(), newTitulo.getPrecio(),
+        newTitulo.getCantidad(), newTitulo.getProveedor().getId());
+
+        return respuesta;
+    }
+    //Eliminamos el titulo-----------------------------------------------------------------------------------------------------------
+    public void eliminarTiutlo(int id){
+        if(tituloRepository.existsById(id)){
+            tituloRepository.deleteById(id);
+        }
+        else{
+            throw new RuntimeException("Error: Usuario inexistente ");
+        }
+    }
 }
