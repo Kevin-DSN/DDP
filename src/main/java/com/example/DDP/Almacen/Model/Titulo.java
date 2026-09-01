@@ -1,5 +1,6 @@
 package com.example.DDP.Almacen.Model;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
 import jakarta.persistence.Id;
@@ -10,15 +11,20 @@ import jakarta.persistence.JoinColumn;
 import com.example.DDP.Usuarios.Model.Proveedor;
 
 @Entity
-@Table(name = "titulos")
+@Table(name = "titulo")
 public class Titulo {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "idTitulo")
     private int id;
+
     private String nombre;
     private double precio;
+
+    @Column(name = "Stock")
     private int cantidad;
+    
     @ManyToOne
     @JoinColumn(name = "idProveedor")
     private Proveedor proveedor;

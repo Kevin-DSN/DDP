@@ -8,8 +8,12 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.context.ActiveProfiles;
+import jakarta.transaction.Transactional;
 
 @SpringBootTest
+@ActiveProfiles("test")
+@Transactional
 public class UsuariosTest {
     
     @Autowired

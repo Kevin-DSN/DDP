@@ -1,9 +1,6 @@
 package com.example.DDP.Movimientos.Model;
 
 import java.time.LocalDate;
-
-import org.springframework.boot.micrometer.metrics.autoconfigure.MetricsProperties.Web.Client;
-
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
 import jakarta.persistence.Id;
@@ -11,14 +8,16 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.Column;
 import com.example.DDP.Usuarios.Model.Cliente;
 
 @Entity
-@Table(name = "movimientos_cliente")
+@Table(name = "movimientos_c")
 public class MovimientosCliente {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private int idMovimientoC;
 
     @ManyToOne

@@ -9,11 +9,11 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.Id;
 
 @Entity
-@Table(name = "detalle_movimientoP")
+@Table(name = "detalle_movp")
 public class DetalleMovimientoP {
     
     @ManyToOne
-    @JoinColumn(name = "idMovimientoP")
+    @JoinColumn(name = "idMovP")
     private MovimientosProveedor movimientosProveedor;
 
     private String Producto;

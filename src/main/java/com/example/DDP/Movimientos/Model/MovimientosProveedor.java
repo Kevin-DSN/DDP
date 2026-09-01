@@ -1,5 +1,6 @@
 package com.example.DDP.Movimientos.Model;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
 import jakarta.persistence.Id;
@@ -11,11 +12,12 @@ import java.time.LocalDate;
 
 import com.example.DDP.Usuarios.Model.Proveedor;
 @Entity
-@Table(name = "movimientos_proveedor")
+@Table(name = "movimientos_p")
 public class MovimientosProveedor {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private int idMovimientoP;
 
     @ManyToOne
