@@ -26,15 +26,15 @@ public class MovimientosCliente {
 
     private LocalDate fecha;
     private String Movimiento;
-    private int Monto;
-    private int SaldoActual;
-    private int SaldoNuevo;
+    private double Monto;
+    private double SaldoActual;
+    private double SaldoNuevo;
 
     protected MovimientosCliente(){
 
     }
 
-    public MovimientosCliente(Cliente Cliente, LocalDate Fecha, String movimiento, int monto, int saldoA, int SaldoN){
+    public MovimientosCliente(Cliente Cliente, LocalDate Fecha, String movimiento, double monto, double saldoA, double SaldoN){
         this.cliente = Cliente;
         this.fecha = Fecha;
         this.Movimiento = movimiento;
@@ -60,15 +60,15 @@ public class MovimientosCliente {
         return Movimiento;
     }
 
-    public int getMonto() {
+    public double getMonto() {
         return Monto;
     }
 
-    public int getSaldoActual() {
+    public double getSaldoActual() {
         return SaldoActual;
     }
 
-    public int getSaldoNuevo() {
+    public double getSaldoNuevo() {
         return SaldoNuevo;
     }
 }

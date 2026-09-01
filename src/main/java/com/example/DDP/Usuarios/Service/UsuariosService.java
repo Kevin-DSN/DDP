@@ -71,6 +71,16 @@ public class UsuariosService {
         }
     }
 
+    //Obtenemos el saldo del cliente---------------------------------------------------------------------------------------------
+    public double consultdaSaldoCliente(int id){
+        Cliente cliente = clienteRepository.findById(id).orElseThrow(() -> new RuntimeException(
+        "Cliente no encontrado"));
+
+        double saldo = cliente.getSaldo();
+
+        return saldo;
+    }
+
     //Insertar nuevo proveedor---------------------------------------------------------------------------------------------------
     public SelectProveedorDTO crearProveedor(InsertProveedorDTO dto){
         
@@ -123,5 +133,15 @@ public class UsuariosService {
         else{
             throw new RuntimeException("Error: Usuario inexistente ");
         }
+    }
+
+    //Obtenemos el saldo del proveedor
+    public double obtieneSaldoProveedor(int id){
+        Proveedor proveedor = proveedorRepository.findById(id).orElseThrow(() -> new RuntimeException(
+        "Cliente no encontrado"));
+
+        double saldo = proveedor.getSaldo();
+
+        return saldo;
     }
 }

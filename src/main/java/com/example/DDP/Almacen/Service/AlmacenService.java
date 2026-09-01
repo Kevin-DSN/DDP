@@ -65,4 +65,13 @@ public class AlmacenService {
             throw new RuntimeException("Error: Usuario inexistente ");
         }
     }
+    //Obtenemos el stock del producto-------------------------------------------------------------------------------------------------
+    public int obtieneStock(int id){
+        Titulo titulo = tituloRepository.findById(id).orElseThrow(() -> new RuntimeException(
+        "Titulo no encontrado"));
+
+        int Stock = titulo.getCantidad();
+
+        return Stock;
+    }
 }
