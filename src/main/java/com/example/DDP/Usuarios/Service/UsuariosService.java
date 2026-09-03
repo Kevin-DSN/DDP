@@ -135,7 +135,7 @@ public class UsuariosService {
         }
     }
 
-    //Obtenemos el saldo del proveedor
+    //Obtenemos el saldo del proveedor--------------------------------------------------------------------------------------------
     public double obtieneSaldoProveedor(int id){
         Proveedor proveedor = proveedorRepository.findById(id).orElseThrow(() -> new RuntimeException(
         "Cliente no encontrado"));
@@ -143,5 +143,22 @@ public class UsuariosService {
         double saldo = proveedor.getSaldo();
 
         return saldo;
+    }
+
+    //Actualizamos el saldo del cliente-------------------------------------------------------------------------------------------
+    public void nuevoSaldoCliente(int id, double saldo){
+        Cliente cliente = clienteRepository.findById(id).orElseThrow(() -> new RuntimeException(
+        "Cliente no encontrado"));
+        cliente.UpdateSaldo(saldo);
+
+        clienteRepository.save(cliente);
+    }
+
+    //Actualizamos el saldo del proveedor--------------------------------------------------------------------------------------------
+    public void nuevoSaldoProveedor(int id, double Saldo){
+        Proveedor proveedor= proveedorRepository.findById(id).orElseThrow(() -> new RuntimeException(
+        "Cliente no encontrado"));
+        
+        proveedorRepository.save(proveedor);
     }
 }

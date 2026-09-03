@@ -40,15 +40,6 @@ public class Titulo {
         this.precio = precio;
     }
 
-    //Suma y resta stock
-    public void agregaStock(int Cantidad){
-        this.cantidad += Cantidad;
-    }
-
-    public void restaStock(int Cantidad){
-        this.cantidad += Cantidad;
-    }
-
     //Metodos de actualizacion de datos
     public void updateNombre(String Nombre){
         this.nombre = Nombre;
@@ -60,6 +51,10 @@ public class Titulo {
 
     public void updatePrecio(double precio){
         this.precio = precio;
+    }
+
+    public void updateStock(int cantidad){
+        this.cantidad = cantidad;
     }
 
     //Metodos get

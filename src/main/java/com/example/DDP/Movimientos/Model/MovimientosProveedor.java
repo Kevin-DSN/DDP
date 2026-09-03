@@ -8,7 +8,11 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.CascadeType;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 import com.example.DDP.Usuarios.Model.Proveedor;
 @Entity
@@ -26,15 +30,18 @@ public class MovimientosProveedor {
 
     private LocalDate fecha;
     private String Movimiento;
-    private int Monto;
-    private int SaldoActual;
-    private int SaldoNuevo;
+    private double Monto;
+    private double SaldoActual;
+    private double SaldoNuevo;
+
+    @OneToMany(mappedBy = "movimientosProveedor", cascade = CascadeType.ALL)
+    private List<DetalleMovimientoP> detalles = new ArrayList<>();
 
     protected MovimientosProveedor(){
         
     }
 
-    public MovimientosProveedor(Proveedor proveedor, LocalDate Fecha, String movimiento, int monto, int SaldoA, int SaldoN){
+    public MovimientosProveedor(Proveedor proveedor, LocalDate Fecha, String movimiento, double monto, double SaldoA, double SaldoN){
         this.proveedor = proveedor;
         this.fecha = Fecha;
         this.Movimiento = movimiento;
@@ -60,15 +67,19 @@ public class MovimientosProveedor {
         return Movimiento;
     }
 
-    public int getMonto() {
+    public double getMonto() {
         return Monto;
     }
 
-    public int getSaldoActual() {
+    public double getSaldoActual() {
         return SaldoActual;
     }
 
-    public int getSaldoNuevo() {
+    public double getSaldoNuevo() {
         return SaldoNuevo;
+    }
+    public void addDetalle(DetalleMovimientoP detalle) {
+        detalles.add(detalle);
+        detalle.setMovimientosProveedor(this);
     }
 }

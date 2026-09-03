@@ -12,23 +12,26 @@ import jakarta.persistence.Id;
 @Table(name = "detalle_movp")
 public class DetalleMovimientoP {
     
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
+
     @ManyToOne
     @JoinColumn(name = "idMovP")
     private MovimientosProveedor movimientosProveedor;
 
     private String Producto;
-    
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private int Cantidad;
+    private double Precio;
 
     protected DetalleMovimientoP(){
         
     }
 
-    public DetalleMovimientoP(MovimientosProveedor movimientosProveedor, String producto){
-        this.movimientosProveedor = movimientosProveedor;
+    public DetalleMovimientoP(String producto, int cantidad, double Precio){
         this.Producto = producto;
+        this.Cantidad = cantidad;
+        this.Precio = Precio;
     }
 
     //OBtenemos los datos para consultas
@@ -42,5 +45,17 @@ public class DetalleMovimientoP {
 
     public String getProducto() {
         return Producto;
+    }
+
+    public int getCantidad() {
+        return Cantidad;
+    }
+
+    public double getPrecio() {
+        return Precio;
+    }
+
+    public void setMovimientosProveedor(MovimientosProveedor movimientosProveedor) {
+        this.movimientosProveedor = movimientosProveedor;
     }
 }

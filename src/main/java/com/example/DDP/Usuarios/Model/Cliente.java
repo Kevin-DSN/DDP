@@ -35,15 +35,6 @@ public class Cliente {
         this.saldo = Saldo;
     }
 
-    //Actualiza saldo de ventas y devoluciones
-    public void saldoVenta(double saldo){
-        this.saldo += saldo;
-    }
-
-    public void saldoDevolucion(double saldo){
-        this.saldo -= saldo;
-    }
-
     //Metodos Update
     public void updateNombre(String nombre){
         this.nombre = nombre;
@@ -59,6 +50,10 @@ public class Cliente {
 
     public void updateRFC(String RFC){
         this.RFC = RFC;
+    }
+
+    public void UpdateSaldo(double saldo){
+        this.saldo = saldo;
     }
 
     //Metodos Select

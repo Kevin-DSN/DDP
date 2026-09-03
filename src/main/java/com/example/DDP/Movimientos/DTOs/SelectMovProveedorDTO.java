@@ -7,11 +7,11 @@ public class SelectMovProveedorDTO {
     private int idProveedor;
     private LocalDate fecha;
     private String Movimiento;
-    private int Monto;
-    private int SaldoActual;
-    private int SaldoNuevo;
+    private double Monto;
+    private double SaldoActual;
+    private double SaldoNuevo;
 
-    public SelectMovProveedorDTO(int IdProveedor, LocalDate Fecha, String Movimiento, int Monto, int SaldoActual, int SaldoNuevo){
+    public SelectMovProveedorDTO(int IdProveedor, LocalDate Fecha, String Movimiento, double Monto, double SaldoActual, double SaldoNuevo){
         this.idProveedor = IdProveedor;
         this.fecha = Fecha;
         this.Movimiento = Movimiento;
@@ -32,15 +32,15 @@ public class SelectMovProveedorDTO {
         return Movimiento;
     }
 
-    public int getMonto() {
+    public double getMonto() {
         return Monto;
     }
 
-    public int getSaldoActual() {
+    public double getSaldoActual() {
         return SaldoActual;
     }
 
-    public int getSaldoNuevo() {
+    public double getSaldoNuevo() {
         return SaldoNuevo;
     }
 }

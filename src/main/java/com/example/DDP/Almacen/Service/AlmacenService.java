@@ -74,4 +74,13 @@ public class AlmacenService {
 
         return Stock;
     }
+
+    //Actualizamos el stok de producto
+    public void nuevoStock(int id, int Stock){
+        Titulo titulo = tituloRepository.findById(id).orElseThrow(() -> new RuntimeException(
+        "Titulo no encontrado"));
+        titulo.updateStock(Stock);
+
+        tituloRepository.save(titulo);
+    }
 }

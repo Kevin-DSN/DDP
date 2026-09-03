@@ -5,6 +5,6 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface MovProveedorRepository extends CrudRepository<MovimientosProveedor, Long> {
+public interface MovProveedorRepository extends CrudRepository<MovimientosProveedor, Integer> {
 
 }

@@ -32,14 +32,6 @@ public class Proveedor {
         this.saldo = Saldo;
     }
 
-    //Modificamos el saldo con compra o devolucion
-    public void saldoCompra(double Saldo){
-        this.saldo += Saldo;
-    }
-    public void saldoDevolucion(double Saldo){
-        this.saldo -= Saldo;
-    }
-
     //Actualizamos los datos
     public void updateNombre(String Nombre){
         this.nombre = Nombre;
@@ -50,6 +42,10 @@ public class Proveedor {
 
     public void updateTelefono(String Telefono){
         this.telefono = Telefono;
+    }
+
+    public void updateSaldo(double saldo){
+        this.saldo = saldo;
     }
     
     //Metodos select
