@@ -22,16 +22,16 @@ public class UsuariosTest {
     //Test para guardar clientes-----------------------------------------------------------------------------------------------------------------------------------------------------
     @Test
 	public void debeGuardarClienteNuevo() {
-        InsertClienteDTO entradaDto = new InsertClienteDTO("Kevin", "Corregidora N 30, Tlalpan",
-        "7443380069", "SONK00710B3");
+        InsertClienteDTO entradaDto = new InsertClienteDTO("Juan", "Monterrey Nl",
+        "7445698532", "JPVQ00710B3");
         
         SelectClienteDTO resultadoDto = clienteService.crearCliente(entradaDto);
         
         assertNotNull(resultadoDto.getId());    
 
-        assertEquals(6, resultadoDto.getId());
-        assertEquals("Kevin", resultadoDto.getNombre());
-        assertEquals("7443380069", resultadoDto.getTelefono());
+        assertEquals(1, resultadoDto.getId());
+        assertEquals("Juan", resultadoDto.getNombre());
+        assertEquals("7445698532", resultadoDto.getTelefono());
 	}
 
     //Test para seleccionar los clientes---------------------------------------------------------------------------------------------

@@ -33,7 +33,7 @@ public class AlmacenService {
     }
 
     //Visualizamos los datos del titulo-------------------------------------------------------------------------------------------
-    public SelectTituloDTO verCliente(int id){
+    public SelectTituloDTO verTitulo(int id){
 
         Titulo titulo = tituloRepository.findById(id).orElseThrow(() -> new RuntimeException(
         "Titulo no encontrado"));
@@ -42,12 +42,14 @@ public class AlmacenService {
 
         return resultadoDTO;
     }
+
     //Actualizamos los datos del titulo-----------------------------------------------------------------------------------------------
-    public SelectTituloDTO actualizaCliente(UpdateTituloDTO dto){
+    public SelectTituloDTO actualizaTitulo(UpdateTituloDTO dto){
 
         Titulo titulo = tituloRepository.findById(dto.getId()).orElseThrow(() -> new RuntimeException(
         "Titulo no encontrado"));
         titulo.updateNombre(dto.getNombre());
+        titulo.updatePrecio(dto.getPrecio());
 
         Titulo newTitulo = tituloRepository.save(titulo);
 
@@ -56,6 +58,7 @@ public class AlmacenService {
 
         return respuesta;
     }
+
     //Eliminamos el titulo-----------------------------------------------------------------------------------------------------------
     public void eliminarTiutlo(int id){
         if(tituloRepository.existsById(id)){
@@ -65,6 +68,7 @@ public class AlmacenService {
             throw new RuntimeException("Error: Usuario inexistente ");
         }
     }
+
     //Obtenemos el stock del producto-------------------------------------------------------------------------------------------------
     public int obtieneStock(int id){
         Titulo titulo = tituloRepository.findById(id).orElseThrow(() -> new RuntimeException(
@@ -76,10 +80,22 @@ public class AlmacenService {
     }
 
     //Actualizamos el stok de producto
-    public void nuevoStock(int id, int Stock){
+    public void restaStock(int id, int Stock){
         Titulo titulo = tituloRepository.findById(id).orElseThrow(() -> new RuntimeException(
         "Titulo no encontrado"));
-        titulo.updateStock(Stock);
+        int s = titulo.getCantidad();
+        int nStock = s - Stock;
+        titulo.updateStock(nStock);
+
+        tituloRepository.save(titulo);
+    }
+
+    public void sumaStock(int id, int Stock){
+        Titulo titulo = tituloRepository.findById(id).orElseThrow(() -> new RuntimeException(
+        "Titulo no encontrado"));
+        int s = titulo.getCantidad();
+        int nStock = s + Stock;
+        titulo.updateStock(nStock);
 
         tituloRepository.save(titulo);
     }

@@ -20,6 +20,7 @@ public class DetalleMovimientoP {
     @JoinColumn(name = "idMovP")
     private MovimientosProveedor movimientosProveedor;
 
+    private int idTitulo;
     private String Producto;
     private int Cantidad;
     private double Precio;
@@ -28,10 +29,12 @@ public class DetalleMovimientoP {
         
     }
 
-    public DetalleMovimientoP(String producto, int cantidad, double Precio){
+    public DetalleMovimientoP(MovimientosProveedor mov, int id, String producto, int cantidad, double Precio){
         this.Producto = producto;
         this.Cantidad = cantidad;
         this.Precio = Precio;
+        this.movimientosProveedor = mov;
+        this.idTitulo = id;
     }
 
     //OBtenemos los datos para consultas
@@ -41,6 +44,10 @@ public class DetalleMovimientoP {
 
     public MovimientosProveedor getMovimientosProveedor() {
         return movimientosProveedor;
+    }
+
+    public int getIdTitulo() {
+        return idTitulo;
     }
 
     public String getProducto() {

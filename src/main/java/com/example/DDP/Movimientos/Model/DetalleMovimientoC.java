@@ -20,19 +20,21 @@ public class DetalleMovimientoC {
     @JoinColumn(name = "idMovC")
     private MovimientosCliente movimientosCliente;
 
+    private int idTitulo;
     private String Producto;
     private int Cantidad;
     private double Precio;
     
-
     protected DetalleMovimientoC(){
         
     }
 
-    public DetalleMovimientoC(String Producto, int cantidad, double Precio){
+    public DetalleMovimientoC(MovimientosCliente mov, int id, String Producto, int cantidad, double Precio){
         this.Producto = Producto;
         this.Cantidad = cantidad;
         this.Precio = Precio;
+        this.movimientosCliente = mov;
+        this.idTitulo = id;
     }
 
     //Obtenemos los datos para las cosultas
@@ -42,6 +44,10 @@ public class DetalleMovimientoC {
 
     public MovimientosCliente getMovimientosCliente() {
         return movimientosCliente;
+    }
+
+    public int getIdTitulo() {
+        return idTitulo;
     }
 
     public String getProducto() {
