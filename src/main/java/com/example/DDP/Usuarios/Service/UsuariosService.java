@@ -158,6 +158,7 @@ public class UsuariosService {
     public void nuevoSaldoProveedor(int id, double Saldo){
         Proveedor proveedor= proveedorRepository.findById(id).orElseThrow(() -> new RuntimeException(
         "Cliente no encontrado"));
+        proveedor.updateSaldo(Saldo);
         
         proveedorRepository.save(proveedor);
     }

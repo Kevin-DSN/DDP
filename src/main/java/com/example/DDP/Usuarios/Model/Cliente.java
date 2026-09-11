@@ -1,6 +1,5 @@
 package com.example.DDP.Usuarios.Model;
 
-import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
 import jakarta.persistence.Id;
@@ -18,7 +17,6 @@ public class Cliente {
     private String nombre;
     private String direccion;
 
-    @Column(name = "Celular")
     private String telefono;
     private String RFC;
     private double saldo;

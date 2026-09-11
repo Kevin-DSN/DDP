@@ -16,7 +16,6 @@ public class Titulo {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "idTitulo")
     private int id;
 
     private String nombre;

@@ -6,6 +6,7 @@ import com.example.DDP.Movimientos.Model.*;
 import com.example.DDP.Movimientos.Repository.*;
 import com.example.DDP.Usuarios.Model.*;
 import com.example.DDP.Almacen.Service.*;
+import com.example.DDP.Usuarios.Service.*;
 import com.example.DDP.Usuarios.Repository.*;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -21,6 +22,7 @@ public class MovimientosService {
     private final ClienteRepository clienteRepository;
     private final ProveedorRepository proveedorRepository;
     private final AlmacenService almacenService;
+    private final UsuariosService usuariosService;
 
     public MovimientosService(MovClientesRepository movClientesRepository, 
         MovProveedorRepository movProveedorRepository, 
@@ -28,7 +30,8 @@ public class MovimientosService {
         DetalleMovPRepository detalleMovPRepository,
         ProveedorRepository proveedorRepository,
         ClienteRepository clienteRepository,
-        AlmacenService almacenService) {
+        AlmacenService almacenService,
+        UsuariosService usuariosService) {
         this.movClientesRepository = movClientesRepository;
         this.movProveedorRepository = movProveedorRepository;
         this.detalleMovCRepository = detalleMovCRepository;
@@ -36,6 +39,7 @@ public class MovimientosService {
         this.clienteRepository = clienteRepository;
         this.proveedorRepository = proveedorRepository;
         this.almacenService = almacenService;
+        this.usuariosService = usuariosService;
     }
 
     //Realizamos la venta al cliente-----------------------------------------------------------------------------------------------------
@@ -57,6 +61,7 @@ public class MovimientosService {
         }
 
         MovimientosCliente guardado = movClientesRepository.save(mov);
+        usuariosService.nuevoSaldoCliente(dto.getIdCliente(), nSAldo);
 
         SelectMovClienteDTO respuestaDto = new SelectMovClienteDTO(dto.getIdCliente(), guardado.getFecha(), guardado.getMovimiento(),
         guardado.getMonto(), guardado.getSaldoActual(), guardado.getSaldoNuevo());
@@ -83,6 +88,7 @@ public class MovimientosService {
         }
 
         MovimientosCliente guardado = movClientesRepository.save(mov);
+        usuariosService.nuevoSaldoCliente(dto.getIdCliente(), nSAldo);
 
         SelectMovClienteDTO respuestaDto = new SelectMovClienteDTO(dto.getIdCliente(), guardado.getFecha(), guardado.getMovimiento(),
         guardado.getMonto(), guardado.getSaldoActual(), guardado.getSaldoNuevo());
@@ -109,6 +115,7 @@ public class MovimientosService {
         }
 
         MovimientosProveedor guardado = movProveedorRepository.save(mov);
+        usuariosService.nuevoSaldoProveedor(dto.getIdProveedor(), nSaldo);
 
         SelectMovProveedorDTO respuestaDTO = new SelectMovProveedorDTO(dto.getIdProveedor(), guardado.getFecha(), guardado.getMovimiento(),
         guardado.getMonto(), guardado.getSaldoActual(), guardado.getSaldoNuevo());
@@ -135,7 +142,8 @@ public class MovimientosService {
         }
 
         MovimientosProveedor guardado = movProveedorRepository.save(mov);
-
+        usuariosService.nuevoSaldoProveedor(dto.getIdProveedor(), nSaldo);
+        
         SelectMovProveedorDTO respuestaDTO = new SelectMovProveedorDTO(dto.getIdProveedor(), guardado.getFecha(), guardado.getMovimiento(),
         guardado.getMonto(), guardado.getSaldoActual(), guardado.getSaldoNuevo());
 

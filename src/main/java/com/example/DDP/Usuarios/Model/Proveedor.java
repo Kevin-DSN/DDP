@@ -1,6 +1,5 @@
 package com.example.DDP.Usuarios.Model;
 
-import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
 import jakarta.persistence.Id;
@@ -13,7 +12,6 @@ public class Proveedor {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "idProveedor")
     private int id;
 
     private String nombre;

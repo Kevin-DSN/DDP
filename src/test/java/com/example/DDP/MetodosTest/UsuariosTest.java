@@ -27,32 +27,42 @@ public class UsuariosTest {
         
         SelectClienteDTO resultadoDto = clienteService.crearCliente(entradaDto);
         
+        System.out.println("Cliente registrado: "+resultadoDto.getId()+", "+resultadoDto.getNombre()+", "+resultadoDto.getTelefono()
+        +", "+resultadoDto.getRFC()+", "+resultadoDto.getDireccion()+", "+resultadoDto.getSaldo());
+
         assertNotNull(resultadoDto.getId());    
 
-        assertEquals(1, resultadoDto.getId());
+        assertEquals(5, resultadoDto.getId());
         assertEquals("Juan", resultadoDto.getNombre());
         assertEquals("7445698532", resultadoDto.getTelefono());
+        assertEquals(0.0, resultadoDto.getSaldo());
 	}
+    
 
     //Test para seleccionar los clientes---------------------------------------------------------------------------------------------
     @Test
     public void debeSeleccioanarClienteExistente(){
-        SelectClienteDTO entradaDto = clienteService.verCliente(2);
+        SelectClienteDTO resultadoDto = clienteService.verCliente(2);
 
-        assertEquals(2, entradaDto.getId());
+        System.out.println("Cliente seleccionado: "+resultadoDto.getId()+", "+resultadoDto.getNombre()+", "+resultadoDto.getTelefono()
+        +", "+resultadoDto.getRFC()+", "+resultadoDto.getDireccion()+", "+resultadoDto.getSaldo());
+        assertEquals(2, resultadoDto.getId());
     }
 
     //Test para editar un cliente-------------------------------------------------------------------------------------------------------
     @Test
     public void debeEditarClienteExistente(){
-        UpdateClienteDTO entradaDTO = new UpdateClienteDTO(2, "Daniela", "Monterrey",
-        "5697569054", "VIVE000719k");
+        UpdateClienteDTO entradaDTO = new UpdateClienteDTO(2, "Joan Ambriz", "KFC",
+        "7442379067", "JOMA045710BA3");
 
         SelectClienteDTO resultadoDto = clienteService.editarCliente(entradaDTO);
 
+        System.out.println("Cliente editado: "+resultadoDto.getId()+", "+resultadoDto.getNombre()+", "+resultadoDto.getTelefono()
+        +", "+resultadoDto.getRFC()+", "+resultadoDto.getDireccion()+", "+resultadoDto.getSaldo());
+
         assertEquals(2, resultadoDto.getId());
-        assertEquals("Daniela", resultadoDto.getNombre());
-        assertEquals("Monterrey", resultadoDto.getDireccion());
+        assertEquals("Joan Ambriz", resultadoDto.getNombre());
+        assertEquals("KFC", resultadoDto.getDireccion());
     }
 
     //Test para eliminar un cliente---------------------------------------------------------------------------------------------
@@ -62,12 +72,14 @@ public class UsuariosTest {
         clienteService.eliminarCliente(id);
     }
 
-    //Test para crear un nuevo cliente-------------------------------------------------------------------------------------------------   
+    //Test para crear un nuevo proveedor-------------------------------------------------------------------------------------------------   
     @Test
     public void debeCrearNuevoProveedor(){
         InsertProveedorDTO entradaDto = new InsertProveedorDTO("Chuy", "La Jornada", "7441803813");
 
         SelectProveedorDTO resultado = clienteService.crearProveedor(entradaDto);
+        System.out.println("Nuevo proveedor: "+resultado.getId()+", "+resultado.getNombre()+", "+resultado.getEditorial()+
+        ", "+resultado.getTelefono()+", "+resultado.getSaldo());
 
         assertNotNull(resultado.getId());
         assertEquals(3, resultado.getId());
@@ -78,27 +90,33 @@ public class UsuariosTest {
     //Test para seleccionar un proveedor-------------------------------------------------------------------------------------------
     @Test
     public void debeSeleccionarProveedorExistente(){
-        SelectProveedorDTO cliente = clienteService.verProveedor(2);
+        SelectProveedorDTO resultado = clienteService.verProveedor(2);
 
-        assertEquals(2, cliente.getId());
-        assertEquals("Chuy", cliente.getNombre());
-    }
-
-    //Test para eidtar un proveedor-------------------------------------------------------------------------------------------------
-    @Test
-    public void debeEditarProveedorExistente(){
-        UpdateProveedorDTO entradaDTO = new UpdateProveedorDTO(2, "Axel", "La Jornada", "7441825813");
-        SelectProveedorDTO resultado = clienteService.editarProveedor(entradaDTO);
+        System.out.println("Proveedor seleccionado: "+resultado.getId()+", "+resultado.getNombre()+", "+resultado.getEditorial()+
+        ", "+resultado.getTelefono()+", "+resultado.getSaldo());
 
         assertEquals(2, resultado.getId());
-        assertEquals("Axel", resultado.getNombre());
-        assertEquals("7441825813", resultado.getTelefono());
+        assertEquals("Anelime Salgado", resultado.getNombre());
+    }
+
+    //Test para editar un proveedor-------------------------------------------------------------------------------------------------
+    @Test
+    public void debeEditarProveedorExistente(){
+        UpdateProveedorDTO entradaDTO = new UpdateProveedorDTO(1, "Graciela Hernandez", "Porrua", "5589007658");
+        SelectProveedorDTO resultado = clienteService.editarProveedor(entradaDTO);
+
+        System.out.println("Proveedor editado: "+resultado.getId()+", "+resultado.getNombre()+", "+resultado.getEditorial()+
+        ", "+resultado.getTelefono()+", "+resultado.getSaldo());
+
+        assertEquals(1, resultado.getId());
+        assertEquals("Graciela Hernandez", resultado.getNombre());
+        assertEquals("5589007658", resultado.getTelefono());
     }
 
     //Test para eliminar un proveedor-----------------------------------------------------------------------------------------------
     @Test
     public void debeEliminarProveedorExistente(){
-        int id = 3;
+        int id = 2;
         clienteService.eliminarProveedor(id);
     }
 }

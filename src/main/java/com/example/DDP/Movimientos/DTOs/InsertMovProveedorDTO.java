@@ -7,9 +7,9 @@ public class InsertMovProveedorDTO {
     private int idProveedor;
     private LocalDate fecha;
     private String Movimiento;
-    private int Monto;
+    private double Monto;
 
-    public InsertMovProveedorDTO(int IdProveedor, LocalDate Fecha, String Movimiento, int Monto){
+    public InsertMovProveedorDTO(int IdProveedor, LocalDate Fecha, String Movimiento, double Monto){
         this.idProveedor = IdProveedor;
         this.fecha = Fecha;
         this.Movimiento = Movimiento;
@@ -25,7 +25,7 @@ public class InsertMovProveedorDTO {
         return fecha;
     }
 
-    public int getMonto() {
+    public double getMonto() {
         return Monto;
     }
 

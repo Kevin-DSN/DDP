@@ -22,38 +22,46 @@ public class TitulosTest {
     //Testeamos la insercion de un titulo
     @Test 
     public void debeCrearNuevoTitulo(){
-        InsertTituloDTO dto = new InsertTituloDTO("The Flash", 49, 1);
+        InsertTituloDTO dto = new InsertTituloDTO("The Flash", 49.99, 1);
         SelectTituloDTO save = almacenService.crearTitulo(dto);
 
+        System.out.println("Titulo registrado: "+save.getId()+", "+save.getNombre()+", "+save.getPrecio()+", "
+        +save.getCantidad()+". Pertenece al proveedor: "+save.getIdProveedor());
         assertNotNull(save.getId());
-        assertEquals(1, save.getId());
+        assertEquals(6, save.getId());
         assertEquals("The Flash", save.getNombre());
-        assertEquals(49, save.getPrecio());
+        assertEquals(49.99, save.getPrecio());
     }
 
     @Test 
     //Testeamos la visualizacion de un titulo existente
     public void debeSeleccionarTituloExistente(){
         int id = 1;
-        SelectTituloDTO select = almacenService.verTitulo(id);
+        SelectTituloDTO save = almacenService.verTitulo(id);
 
-        assertEquals(1, select.getId());
+        System.out.println("Titulo seleccionado: "+save.getId()+", "+save.getNombre()+", "+save.getPrecio()+", "
+        +save.getCantidad()+". Pertenece al proveedor: "+save.getIdProveedor());
+
+        assertEquals(1, save.getId());
     }
 
     //Testeamos la actualizacion de titulo existente
     @Test 
     public void debeEditarTituloExistente(){
-        UpdateTituloDTO update = new UpdateTituloDTO(1, "Flash Rebirth", 45);
+        UpdateTituloDTO update = new UpdateTituloDTO(1, "Crazy Mountains", 45);
         SelectTituloDTO save = almacenService.actualizaTitulo(update);
 
-        assertEquals("Flash Rebirth", save.getNombre());
+        System.out.println("Titulo editado: "+save.getId()+", "+save.getNombre()+", "+save.getPrecio()+", "
+        +save.getCantidad()+". Pertenece al proveedor: "+save.getIdProveedor());
+
+        assertEquals("Crazy Mountains", save.getNombre());
         assertEquals(45, save.getPrecio());
     }
 
     //Testeamos la eliminacion de un titulo existente
     @Test 
     public void debeELiminarTituloExistente(){
-        int id = 1;
+        int id = 5;
         almacenService.eliminarTiutlo(id);
     }
 }
