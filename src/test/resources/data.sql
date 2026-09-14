@@ -41,14 +41,14 @@ VALUES (1, '2026-09-10', 'Venta', 1905.5, 200, 2105.5);
 INSERT INTO movimientos_p (id_proveedor, fecha, movimiento, monto, saldo_actual, saldo_nuevo)
 VALUES (2, '2026-09-11', 'Compra', 500, 250, 750);
 /*------------------------Generamos algunos detalles de los movimientos del cliente------------------------*/
-INSERT INTO detalle_movc (idmovc, id_titulo, producto, cantidad, precio);
+INSERT INTO detalle_movc (id_mov, id_titulo, producto, cantidad, precio)
 VALUES (1, 2, 'feral', 12, 40.6);
-INSERT INTO detalle_movc (idmovc, id_titulo, producto, cantidad, precio);
+INSERT INTO detalle_movc (id_mov, id_titulo, producto, cantidad, precio)
 VALUES (1, 3, 'necronomicon', 17, 27.4);
-INSERT INTO detalle_movc (idmovc, id_titulo, producto, cantidad, precio);
+INSERT INTO detalle_movc (id_mov, id_titulo, producto, cantidad, precio)
 VALUES (1, 4, 'la odisea', 18, 38.7);
 /*------------------------Generamos algunos detalles de los movimientos del proveedor------------------------*/
-INSERT INTO detalle_movp (idmovp, id_titulo, producto, cantidad, precio)
+INSERT INTO detalle_movp (id_mov, id_titulo, producto, cantidad, precio)
 VALUES (1, 4, 'la odisea', 25, 38.7);
-INSERT INTO detalle_movc (idmovp, id_titulo, producto, cantidad, precio)
+INSERT INTO detalle_movp (id_mov, id_titulo, producto, cantidad, precio)
 VALUES (1, 5, 'la iliada', 28, 33.5);

@@ -17,7 +17,7 @@ public class DetalleMovimientoC {
     private int id;
 
     @ManyToOne
-    @JoinColumn(name = "idMovC")
+    @JoinColumn(name = "id_mov")
     private MovimientosCliente movimientosCliente;
 
     private int idTitulo;

@@ -35,4 +35,9 @@ public class DetalleMovCDTO {
     public double getPrecio() {
         return Precio;
     }
+
+    @Override 
+    public String toString(){
+        return "Id: "+id+", Id Movimiento: "+idMovimientoC+", Producto: "+Producto+", Cantidad: "+Cantidad+", Precio: "+Precio+"\n";
+    }
 }

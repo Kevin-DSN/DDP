@@ -9,7 +9,7 @@ public class DetalleMovPDTO {
     private double Precio;
 
     public DetalleMovPDTO (int id, int IdMovimiento, String Producto, int Cantidad, double Precio){
-        this.idMovimientoP = id;
+        this.id = id;
         this.idMovimientoP = IdMovimiento;
         this.Producto = Producto;
         this.Cantidad = Cantidad;
@@ -34,5 +34,10 @@ public class DetalleMovPDTO {
 
     public double getPrecio() {
         return Precio;
+    }
+
+    @Override 
+    public String toString(){
+        return "Id: "+id+", Id Movimiento: "+idMovimientoP+", Producto: "+Producto+", Cantidad: "+Cantidad+", Precio: "+Precio+"\n";
     }
 }

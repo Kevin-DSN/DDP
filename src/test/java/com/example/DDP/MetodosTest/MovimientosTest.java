@@ -45,6 +45,7 @@ public class MovimientosTest {
         SelectTituloDTO r2 = almacenService.verTitulo(3);
         SelectTituloDTO r3 = almacenService.verTitulo(4);
         SelectProveedorDTO p = usuariosService.verProveedor(1);
+        List<DetalleMovPDTO> detalles = movimientosService.verDetalleMovimientoProveedor(2);
 
         System.out.println("Proveedor: "+p.getNombre()+" con id: "+p.getId()+" y saldo: "+p.getSaldo());
         System.out.println("Realizó el movimiento: "+save.getMovimiento()+" con el monto: "+save.getMonto()+". Saldo anterior: "+save.getSaldoActual()+" y saldo nuevo: "+save.getSaldoNuevo());
@@ -52,6 +53,8 @@ public class MovimientosTest {
         System.out.println("Titulo: "+r1.getNombre()+" y stock: "+r1.getCantidad());
         System.out.println("Titulo: "+r2.getNombre()+" y stock: "+r2.getCantidad());
         System.out.println("Titulo: "+r3.getNombre()+" y stock: "+r3.getCantidad());
+        System.out.println("-----------------------------------------------------------------------");
+        System.out.println(detalles.toString());
 
         assertEquals("Compra", save.getMovimiento());
         assertEquals(928.8, save.getMonto());
@@ -97,6 +100,7 @@ public class MovimientosTest {
         SelectTituloDTO t1 = almacenService.verTitulo(2);
         SelectTituloDTO t2 = almacenService.verTitulo(3);
         SelectTituloDTO t3 = almacenService.verTitulo(4);
+        List<DetalleMovCDTO> detalles = movimientosService.verDetalleMovimientoCliente(2);
 
         System.out.println("El cliente: "+c.getNombre()+" con id: "+c.getId()+" realizó el movimiento: "+save.getMovimiento());
         System.out.println("Operacion que da un total de: $"+save.getMonto());
@@ -104,6 +108,9 @@ public class MovimientosTest {
         System.out.println("Titulo comprado: "+t1.getNombre()+" con un stock de: "+t1.getCantidad());
         System.out.println("Titulo comprado: "+t2.getNombre()+" con un stock de: "+t2.getCantidad());
         System.out.println("Titulo comprado: "+t3.getNombre()+" con un stock de: "+t3.getCantidad());
+        System.out.println("-----------------------------------------------------------------------");
+        System.out.println("-------------------------------Detalle-----------------------------------");
+        System.out.println(detalles.toString());
 
         assertEquals("Venta", save.getMovimiento());
         assertEquals(1393.2, save.getMonto());
@@ -140,6 +147,13 @@ public class MovimientosTest {
     @Test 
     public void debeSeleccionarMovimientoCliente(){
         SelectMovClienteDTO dto = movimientosService.verMovimientoCliente(1);
+        SelectClienteDTO c = usuariosService.verCliente(dto.getIdCliente());
+
+        System.out.println("Datos del cliente");
+        System.out.println("Nombre: "+c.getNombre()+" ID:"+c.getId()+" Saldo: "+c.getSaldo());
+        System.out.println("Datos del movimiento");
+        System.out.println("Movimiento: "+dto.getMovimiento()+" Fecha: "+dto.getFecha());
+        System.out.println("Monto: "+dto.getMonto());
 
         assertNotNull(dto.getIdCliente());
     }
@@ -147,7 +161,13 @@ public class MovimientosTest {
     //Testeamos la ejecucion de una consulta al movimiento realizado al proveedor--------------------------------------------------------------
     @Test 
     public void debeSeleccionarMovimientoProveedor(){
-        SelectMovProveedorDTO dto = movimientosService.verMovimientoProveedor(2);
+        SelectMovProveedorDTO dto = movimientosService.verMovimientoProveedor(1);
+        SelectProveedorDTO p = usuariosService.verProveedor(dto.getIdProveedor());
+        System.out.println("Datos del proveedor");
+        System.out.println("Nombre proveedor: "+p.getNombre()+" ID: "+p.getId());
+        System.out.println("Datos del movimiento");
+        System.out.println("Movimiento: "+dto.getMovimiento()+" Fecha: "+dto.getFecha());
+        System.out.println("Monto: "+dto.getMonto());
 
         assertNotNull(dto.getIdProveedor());
     }
@@ -157,14 +177,20 @@ public class MovimientosTest {
     public void debeSeleccionarDetalleMovimientoCliente(){
         List<DetalleMovCDTO> detalles = movimientosService.verDetalleMovimientoCliente(1);
         
+        System.out.println("Aqui podemos observar los detalles de la operacion");
+        System.out.println(detalles.toString());
+        System.out.println("------------------------------------------------------------");
         assertNotNull(detalles.isEmpty());
     }
 
     //Testeamos la ejecucion de una consulta a el detalle del movimiento realizado al proveedor-----------------------------------
     @Test
     public void debeSeleccionarDetalleMovimientoProveedor(){
-        List<DetalleMovPDTO> detalles = movimientosService.verDetalleMovimientoProveedor(2);
-        
+        List<DetalleMovPDTO> detalles = movimientosService.verDetalleMovimientoProveedor(1);
+        System.out.println("Aqui podemos observar los detalles de la operacion");
+        System.out.println(detalles.toString());
+        System.out.println("------------------------------------------------------------");
+
         assertFalse(detalles.isEmpty());
     }
 }
