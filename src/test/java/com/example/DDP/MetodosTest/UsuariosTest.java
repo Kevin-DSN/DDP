@@ -18,7 +18,7 @@ public class UsuariosTest {
     
     @Autowired
     private UsuariosService clienteService;
-
+    
     //Test para guardar clientes-----------------------------------------------------------------------------------------------------------------------------------------------------
     @Test
 	public void debeGuardarClienteNuevo() {
