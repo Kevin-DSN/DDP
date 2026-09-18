@@ -35,12 +35,12 @@ public class MovimientosTest {
     public void debeCrearCompraAProveedor(){
         LocalDate fecha = LocalDate.now();
         InsertMovProveedorDTO request = new InsertMovProveedorDTO(1, fecha,"Compra", 928.8);
-        int [] id = {2,3,4};
-        String [] Titulos = { "feral", "necronomicon", "la odisea"};
-        int [] Cantidad = {14, 18, 24};
-        double [] Precios = {40.6, 27.4, 38.7};
+        List<InsertDetalleMovPDTO> detalle = List.of(
+            new InsertDetalleMovPDTO(2, "feral", 14, 40.6), 
+            new InsertDetalleMovPDTO(3, "necronomicon", 18, 27.4), 
+            new InsertDetalleMovPDTO(4, "la odisea", 24, 38.7));
 
-        SelectMovProveedorDTO save = movimientosService.generaCompraProveedor(request, id, Titulos, Cantidad, Precios);
+        SelectMovProveedorDTO save = movimientosService.generaCompraProveedor(request, detalle);
         SelectTituloDTO r1 = almacenService.verTitulo(2);
         SelectTituloDTO r2 = almacenService.verTitulo(3);
         SelectTituloDTO r3 = almacenService.verTitulo(4);
@@ -65,12 +65,11 @@ public class MovimientosTest {
     public void debeCrearDevolucionAProveedor(){
         LocalDate fecha = LocalDate.now();
         InsertMovProveedorDTO request = new InsertMovProveedorDTO(1, fecha, "Devolucion", 162.4);
-        int [] id = {1,2};
-        String [] Titulos = {"montañas de la locura", "feral"};
-        int [] Cantidad = {5, 4};
-        double [] Precios = {33.5, 40.6};
+        List<InsertDetalleMovPDTO> detalle = List.of(
+            new InsertDetalleMovPDTO(1, "montañas de la locura", 5, 33.5), 
+            new InsertDetalleMovPDTO(2, "feral", 4, 40.6));
 
-        SelectMovProveedorDTO save = movimientosService.generaMovimientoProveedor(request, id, Titulos, Cantidad, Precios);
+        SelectMovProveedorDTO save = movimientosService.generaMovimientoProveedor(request, detalle);
         SelectTituloDTO r1 = almacenService.verTitulo(1);
         SelectTituloDTO r2 = almacenService.verTitulo(2);
         SelectProveedorDTO p = usuariosService.verProveedor(1);
@@ -90,12 +89,12 @@ public class MovimientosTest {
     public void debeCrearVentaACliente(){
         LocalDate fecha = LocalDate.now();
         InsertMovClienteDTO request = new InsertMovClienteDTO(1, fecha, "Venta", 1393.2);
-        int [] id = {2,3,4};
-        String [] Titulos = {"feral", "necronomicon", "la odisea"};
-        int [] Cantidad = {25, 20, 36};
-        double [] Precios = {40.6, 27.4, 38.7};
+        List<InsertDetalleMovCDTO> detalle = List.of(
+            new InsertDetalleMovCDTO(2, "feral", 25, 40.6), 
+            new InsertDetalleMovCDTO(3, "necronomicon", 20, 27.4), 
+            new InsertDetalleMovCDTO(4, "la odisea", 36, 38.7));
 
-        SelectMovClienteDTO save = movimientosService.generarVentaCliente(request, id, Titulos, Cantidad, Precios);
+        SelectMovClienteDTO save = movimientosService.generarVentaCliente(request, detalle);
         SelectClienteDTO c = usuariosService.verCliente(1);
         SelectTituloDTO t1 = almacenService.verTitulo(2);
         SelectTituloDTO t2 = almacenService.verTitulo(3);
@@ -121,12 +120,12 @@ public class MovimientosTest {
     public void debeCrearDevolucionACliente(){
         LocalDate fecha = LocalDate.now();
         InsertMovClienteDTO request = new InsertMovClienteDTO(1, fecha, "Devolucion", 232.2);
-        int [] id = {2,3,4};
-        String [] Titulos = {"feral", "necronomicon", "la odisea"};
-        int [] Cantidad = {3, 2, 6};
-        double [] Precios = {40.6, 27.4, 38.7};
+        List<InsertDetalleMovCDTO> detalle = List.of(
+            new InsertDetalleMovCDTO(2, "feral", 3, 40.6), 
+            new InsertDetalleMovCDTO(3, "necronomicon", 2, 27.4), 
+            new InsertDetalleMovCDTO(4, "la odisea", 6, 38.7));
 
-        SelectMovClienteDTO save = movimientosService.generarMovimientoCliente(request, id, Titulos, Cantidad, Precios);
+        SelectMovClienteDTO save = movimientosService.generarMovimientoCliente(request, detalle);
         SelectClienteDTO c = usuariosService.verCliente(1);
         SelectTituloDTO t1 = almacenService.verTitulo(2);
         SelectTituloDTO t2 = almacenService.verTitulo(3);

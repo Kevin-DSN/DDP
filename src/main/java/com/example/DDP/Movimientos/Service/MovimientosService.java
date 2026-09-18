@@ -44,7 +44,7 @@ public class MovimientosService {
 
     //Realizamos la venta al cliente-----------------------------------------------------------------------------------------------------
     @Transactional
-    public SelectMovClienteDTO generarVentaCliente(InsertMovClienteDTO dto, int [] ids, String [] Titulos, int [] Cantidad, double [] Precio){
+    public SelectMovClienteDTO generarVentaCliente(InsertMovClienteDTO dto, List<InsertDetalleMovCDTO> detalles){
         Cliente cliente = clienteRepository.findById(dto.getIdCliente()).orElseThrow(() -> new RuntimeException(
         "Cliente no encontrado"));
 
@@ -53,11 +53,10 @@ public class MovimientosService {
 
         MovimientosCliente mov = new MovimientosCliente(cliente, dto.getFecha(), dto.getMovimiento(), dto.getMonto(), saldo, nSAldo);
         
-        int control = Titulos.length;
-        for(int i = 0; i<control; i++){
-            DetalleMovimientoC detalle = new DetalleMovimientoC(mov, ids[i], Titulos[i], Cantidad[i], Precio[i]);
-            mov.addDetalle(detalle);
-            almacenService.restaStock(ids[i], Cantidad[i]);
+        for(InsertDetalleMovCDTO det : detalles){
+            DetalleMovimientoC deta = new DetalleMovimientoC(mov, det.getId(), det.getTitulo(), det.getCantidad(), det.getPrecio());
+            mov.addDetalle(deta);
+            almacenService.restaStock(det.getId(), det.getCantidad());
         }
 
         MovimientosCliente guardado = movClientesRepository.save(mov);
@@ -71,7 +70,7 @@ public class MovimientosService {
 
     //Realizamos la devolucion al cliente---------------------------------------------------------------------------------------------
     @Transactional
-    public SelectMovClienteDTO generarMovimientoCliente(InsertMovClienteDTO dto, int [] ids, String [] Titulos, int [] Cantidad, double [] Precio){
+    public SelectMovClienteDTO generarMovimientoCliente(InsertMovClienteDTO dto, List<InsertDetalleMovCDTO> detalles){
         Cliente cliente = clienteRepository.findById(dto.getIdCliente()).orElseThrow(() -> new RuntimeException(
         "Cliente no encontrado"));
 
@@ -80,11 +79,10 @@ public class MovimientosService {
 
         MovimientosCliente mov = new MovimientosCliente(cliente, dto.getFecha(), dto.getMovimiento(), dto.getMonto(), saldo, nSAldo);
         
-        int control = Titulos.length;
-        for(int i = 0; i<control; i++){
-            DetalleMovimientoC detalle = new DetalleMovimientoC(mov, ids[i], Titulos[i], Cantidad[i], Precio[i]);
-            mov.addDetalle(detalle);
-            almacenService.sumaStock(ids[i], Cantidad[i]);
+        for(InsertDetalleMovCDTO det : detalles){
+            DetalleMovimientoC deta = new DetalleMovimientoC(mov, det.getId(), det.getTitulo(), det.getCantidad(), det.getPrecio());
+            mov.addDetalle(deta);
+            almacenService.sumaStock(det.getId(), det.getCantidad());
         }
 
         MovimientosCliente guardado = movClientesRepository.save(mov);
@@ -98,7 +96,7 @@ public class MovimientosService {
 
     //Realizamos la compra al proveedor--------------------------------------------------------------------------------------------
     @Transactional
-    public SelectMovProveedorDTO generaCompraProveedor(InsertMovProveedorDTO dto, int [] ids, String [] Titulos, int [] Cantidad, double [] Precio){
+    public SelectMovProveedorDTO generaCompraProveedor(InsertMovProveedorDTO dto, List<InsertDetalleMovPDTO> detalles){
         Proveedor proveedor = proveedorRepository.findById(dto.getIdProveedor()).orElseThrow(() -> new RuntimeException(
         "Cliente no encontrado"));
 
@@ -107,11 +105,10 @@ public class MovimientosService {
 
         MovimientosProveedor mov = new MovimientosProveedor(proveedor, dto.getFecha(), dto.getMovimiento(), dto.getMonto(), saldo, nSaldo);
         
-        int control = Titulos.length;
-        for(int i = 0; i<control; i++){
-            DetalleMovimientoP detalle = new DetalleMovimientoP(mov, ids[i], Titulos[i], Cantidad[i], Precio[i]);
-            mov.addDetalle(detalle);
-            almacenService.sumaStock(ids[i], Cantidad[i]);
+        for(InsertDetalleMovPDTO det : detalles){
+            DetalleMovimientoP deta = new DetalleMovimientoP(mov, det.getId(), det.getTitulo(), det.getCantidad(), det.getPrecio());
+            mov.addDetalle(deta);
+            almacenService.sumaStock(det.getId(), det.getCantidad());
         }
 
         MovimientosProveedor guardado = movProveedorRepository.save(mov);
@@ -125,7 +122,7 @@ public class MovimientosService {
 
     //Realizamos la devolucion al proveedor---------------------------------------------------------------------------------------
     @Transactional
-    public SelectMovProveedorDTO generaMovimientoProveedor(InsertMovProveedorDTO dto, int [] ids, String [] Titulos, int [] Cantidad, double [] Precio){
+    public SelectMovProveedorDTO generaMovimientoProveedor(InsertMovProveedorDTO dto, List<InsertDetalleMovPDTO> detalles){
         Proveedor proveedor = proveedorRepository.findById(dto.getIdProveedor()).orElseThrow(() -> new RuntimeException(
         "Cliente no encontrado"));
 
@@ -134,11 +131,10 @@ public class MovimientosService {
 
         MovimientosProveedor mov = new MovimientosProveedor(proveedor, dto.getFecha(), dto.getMovimiento(), dto.getMonto(), saldo, nSaldo);
         
-        int control = Titulos.length;
-        for(int i = 0; i<control; i++){
-            DetalleMovimientoP detalle = new DetalleMovimientoP(mov, ids[i], Titulos[i], Cantidad[i], Precio[i]);
-            mov.addDetalle(detalle);
-            almacenService.restaStock(ids[i], Cantidad[i]);
+        for(InsertDetalleMovPDTO det : detalles){
+            DetalleMovimientoP deta = new DetalleMovimientoP(mov, det.getId(), det.getTitulo(), det.getCantidad(), det.getPrecio());
+            mov.addDetalle(deta);
+            almacenService.restaStock(det.getId(), det.getCantidad());
         }
 
         MovimientosProveedor guardado = movProveedorRepository.save(mov);

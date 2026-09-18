@@ -1,5 +1,5 @@
 package com.example.DDP.EndpointsTest;
 
-public class UsuariosTest {
+public class TitulosTest {
     
 }
